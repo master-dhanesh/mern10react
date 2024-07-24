@@ -8,17 +8,36 @@ const Show = (props) => {
         setusers(copyusers);
     };
 
+    const mystyle = {
+        marginBottom: "10px",
+        marginLeft: "20px",
+        fontSize: "20px",
+    };
     return (
-        <ol>
-            {users.length > 0
-                ? users.map((user, index) => (
-                      <li key={index}>
-                          {user.username} &nbsp;
-                          <span onClick={() => DeleteHandler(index)}>❌</span>
-                      </li>
-                  ))
-                : "No User Found"}
-        </ol>
+        <>
+            <h1>{import.meta.env.VITE_LIST_HEADING}</h1>
+            <ol>
+                {users.length > 0 ? (
+                    users.map((user, index) => (
+                        <li style={mystyle} key={index}>
+                            {user.username} &nbsp;
+                            <span onClick={() => DeleteHandler(index)}>❌</span>
+                        </li>
+                    ))
+                ) : (
+                    <h1
+                        style={{
+                            fontSize: "30px",
+                            textAlign: "center",
+                            color: "tomato",
+                            marginTop: "20px",
+                        }}
+                    >
+                        No User Found
+                    </h1>
+                )}
+            </ol>
+        </>
     );
 };
 

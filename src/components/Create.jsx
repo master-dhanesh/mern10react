@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../App.css";
 
 const Create = (props) => {
     const users = props.users;
@@ -28,7 +29,9 @@ const Create = (props) => {
             onSubmit={SubmitHandler}
             className="w-[80%] mx-auto p-5 my-10 bg-zinc-100"
         >
-            <h1 className="text-3xl mb-5">React Form</h1>
+            <h1 className="text-3xl mb-5">
+                {import.meta.env.VITE_FORM_HEADING}
+            </h1>
 
             <input
                 name="username"
