@@ -1,6 +1,10 @@
-const Show = (props) => {
-    const users = props.users;
-    const setusers = props.setusers;
+import { useContext } from "react";
+import { todocontext } from "../context/TodoContext";
+
+const Show = () => {
+    const [users, setusers] = useContext(todocontext);
+    // const users = props.users;
+    // const setusers = props.setusers;
 
     const DeleteHandler = (index) => {
         const copyusers = [...users];

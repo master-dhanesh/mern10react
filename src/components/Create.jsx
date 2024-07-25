@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { dummycontext, todocontext } from "../context/TodoContext";
 import "../App.css";
 
-const Create = (props) => {
-    const users = props.users;
-    const setusers = props.setusers;
+const Create = () => {
+    const [users, setusers] = useContext(todocontext);
+    const info = useContext(dummycontext);
+    console.log(info);
+    // const users = props.users;
+    // const setusers = props.setusers;
     // const { users, setusers } = props;
 
     const [username, setusername] = useState("");
