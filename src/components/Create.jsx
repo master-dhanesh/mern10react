@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { dummycontext, todocontext } from "../context/TodoContext";
-import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+    const navigate = useNavigate();
+
     const [users, setusers] = useContext(todocontext);
     const info = useContext(dummycontext);
     console.log(info);
@@ -23,6 +25,9 @@ const Create = () => {
         setusers(copyUsers);
 
         // setusers([...users,newuser])
+
+        // redirect to /show
+        navigate("/show");
 
         setusername("");
         setgender("male");

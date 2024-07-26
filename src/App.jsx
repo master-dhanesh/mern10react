@@ -1,14 +1,18 @@
+import { Route, Routes } from "react-router-dom";
 import Create from "./components/Create";
 import Show from "./components/Show";
-import css from "./App.module.css";
+import Home from "./components/Home";
+import Nav from "./components/Nav";
 
 const App = () => {
     return (
         <div>
-            <h1 className={`${css.heading} ${css.weight} `}>Todo App</h1>
-            <Create />
-            <hr className="h-[5px] bg-black " />
-            <Show />
+            <Nav />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/show" element={<Show />} />
+            </Routes>
         </div>
     );
 };

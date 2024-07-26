@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { todocontext } from "../context/TodoContext";
+import { Link } from "react-router-dom";
 
 const Show = () => {
     const [users, setusers] = useContext(todocontext);
@@ -41,6 +42,7 @@ const Show = () => {
                     </h1>
                 )}
             </ol>
+            <Link to="/create">Go To Create</Link>
         </>
     );
 };
