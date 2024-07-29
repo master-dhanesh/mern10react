@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { createRef, useContext, useRef, useState } from "react";
 import { dummycontext, todocontext } from "../context/TodoContext";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+    const inputRef = useRef(null);
     const navigate = useNavigate();
 
     const [users, setusers] = useContext(todocontext);
@@ -14,6 +15,7 @@ const Create = () => {
 
     const [username, setusername] = useState("");
     const [gender, setgender] = useState("male");
+    const [error, seterror] = useState(false);
 
     const SubmitHandler = (e) => {
         e.preventDefault();
@@ -33,6 +35,16 @@ const Create = () => {
         setgender("male");
     };
 
+    const onchangeinput = (e) => {
+        if (inputRef.current.value.length > 4) {
+            seterror(false);
+        } else {
+            seterror(true);
+        }
+        // console.log(inputRef.current.value);
+        setusername(e.target.value);
+    };
+
     return (
         <form
             onSubmit={SubmitHandler}
@@ -43,13 +55,17 @@ const Create = () => {
             </h1>
 
             <input
+                ref={inputRef}
                 name="username"
                 type="text"
                 placeholder="username"
                 className="block mb-5 w-1/2 p-3 rounded"
-                onChange={(e) => setusername(e.target.value)}
+                onChange={onchangeinput}
                 value={username}
             />
+            {error && (
+                <small className="text-red-400">Invalid input data</small>
+            )}
 
             <label htmlFor="" className="block mb-5">
                 <input
