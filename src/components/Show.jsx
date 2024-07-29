@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { todocontext } from "../context/TodoContext";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Show = () => {
     const [users, setusers] = useContext(todocontext);
@@ -17,6 +17,7 @@ const Show = () => {
         marginBottom: "10px",
         marginLeft: "20px",
         fontSize: "20px",
+        cursor: "pointer",
     };
     return (
         <>
@@ -25,7 +26,9 @@ const Show = () => {
                 {users.length > 0 ? (
                     users.map((user, index) => (
                         <li style={mystyle} key={index}>
-                            {user.username} &nbsp;
+                            <Link to={`/show/${index}`}>
+                                {user.username} &nbsp;
+                            </Link>
                             <span onClick={() => DeleteHandler(index)}>❌</span>
                         </li>
                     ))
@@ -42,7 +45,11 @@ const Show = () => {
                     </h1>
                 )}
             </ol>
-            <Link to="/create">Go To Create</Link>
+            <Link className="ml-10 text-blue-500 text-s" to="/create">
+                Go To Create
+            </Link>
+            <hr />
+            <Outlet />
         </>
     );
 };
