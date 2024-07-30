@@ -1,35 +1,20 @@
-import { Route, Routes } from "react-router-dom";
-import Create from "./components/Create";
-import Show from "./components/Show";
+import { Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
+import Users from "./components/Users";
 import Nav from "./components/Nav";
-import Detail from "./components/Detail";
 
 const App = () => {
     return (
-        <div>
+        <div className="mt-10 mx-auto w-[80%] bg-zinc-200 p-10">
             <Nav />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/create" element={<Create />} />
-                {/* <Route path="/show" element={<Show />} />
-                <Route path="/show/:id" element={<Detail />} /> */}
-
-                <Route path="/show" element={<Show />}>
-                    <Route path="/show/:id" element={<Detail />} />
-                </Route>
-
-                <Route
-                    path="*"
-                    element={
-                        <h1 className="text-center mt-10 text-3xl text-red-400">
-                            Page Not Found
-                        </h1>
-                    }
-                />
+                <Route path="/users" element={<Users />} />
             </Routes>
         </div>
     );
 };
 
 export default App;
+
+// https://jsonplaceholder.typicode.com/users (api)
